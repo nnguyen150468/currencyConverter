@@ -61,7 +61,8 @@ function vndToGoal() {
       let rate = VND[goal];
       let result = amount * rate;
       if(isNaN(amount)===false && (amount>0)){
-        console.log("VND",amount,"=",goal,new Intl.NumberFormat({ style: 'currency', 
+        console.log("VND",new Intl.NumberFormat({ style: 'currency', 
+        currency: user }).format(amount),"=",goal,new Intl.NumberFormat({ style: 'currency', 
         currency: goal }).format(result));
       } else {
         console.log("Please enter a valid positive number for your amount.");
@@ -72,7 +73,8 @@ function usdToGoal() {
     let rate = USD[goal];
     let result = amount * rate;
     if(isNaN(amount)===false && (amount>0)){
-        console.log("USD",amount,"=",goal,new Intl.NumberFormat({ style: 'currency', 
+        console.log("USD",new Intl.NumberFormat({ style: 'currency', 
+        currency: user }).format(amount),"=",goal,new Intl.NumberFormat({ style: 'currency', 
         currency: goal }).format(result));
     } else {
         console.log("Please enter a valid positive number for your amount.");
@@ -83,7 +85,8 @@ function krwToGoal() {
     let rate = KRW[goal];
     let result = amount * rate;
     if(isNaN(amount)===false && (amount>0)){
-        console.log("KRW",amount,"=",goal,new Intl.NumberFormat({ style: 'currency', 
+        console.log("KRW",new Intl.NumberFormat({ style: 'currency', 
+        currency: user }).format(amount),"=",goal,new Intl.NumberFormat({ style: 'currency', 
         currency: goal }).format(result));
     } else {
         console.log("Please enter a valid positive number for your amount.");
@@ -94,7 +97,8 @@ function eurToGoal() {
     let rate = EUR[goal];
     let result = amount * rate;
     if(isNaN(amount)===false && (amount>0)){
-        console.log("EUR",amount,"=",goal,new Intl.NumberFormat({ style: 'currency', 
+        console.log("EUR",new Intl.NumberFormat({ style: 'currency', 
+        currency: user }).format(amount),"=",goal,new Intl.NumberFormat({ style: 'currency', 
         currency: goal }).format(result));
     } else {
         console.log("Please enter a valid positive number for your amount.");
@@ -105,7 +109,8 @@ function idrToGoal() {
     let rate = IDR[goal];
     let result = amount * rate;
     if(isNaN(amount)===false && (amount>0)){
-        console.log("IDR",amount,"=",goal,new Intl.NumberFormat({ style: 'currency', 
+        console.log("IDR",new Intl.NumberFormat({ style: 'currency', 
+        currency: user }).format(amount),"=",goal,new Intl.NumberFormat({ style: 'currency', 
     currency: goal }).format(result));
     } else {
         console.log("Please enter a valid positive number for your amount.");
