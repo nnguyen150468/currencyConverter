@@ -1,107 +1,133 @@
-//let user = prompt("What do you want to convert to?\nA. VND to USD\nB. USD to VND");
+let user; let goal; let amount; //decalre variables
 
-let user = prompt("What is your currency?");
-
-let goal = prompt("What do you want to convert to?");
-
-const exchangeRate = 23208;
-
-//currency Format
-function currencyFormat(num) {
-    return num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+/*functions to get the user's currency and the desired currency as well as amount*/
+function getUser(){
+    user = prompt("What is your currency? VND, USD, EUR, KRW, IDR");
 }
 
-/*
-//VND to USD
-function vndToUSD() {
-    let amountVND = prompt("Enter VND amount:");
-    if(isNaN(amountVND)) {
-        let amountVND = prompt("Please enter a valid VND amount.");
-        let result = currencyFormat((amountVND/exchangeRate));
-        console.log("VND",amountVND," = $",result);
-    } else {
-        let result = currencyFormat((amountVND/exchangeRate));
-        console.log("VND",amountVND," = $",result);
-    } 
+function getGoal(){
+    goal = prompt("What do you want to convert to? VND, USD, EUR, KRW, IDR");
 }
 
-
-//USD to VND
-
-function usdToVND() {
-    let amountUSD = prompt("Enter USD amount: \n");
-    if(isNaN(amountUSD)) {
-        let amountUSD = prompt("Please enter a valid USD amount.");
-        let result = currencyFormat(amountUSD * exchangeRate);
-        console.log("$",amountUSD," = VND",result);
-    } else {
-        let result = currencyFormat(amountUSD * exchangeRate);
-        console.log("$",amountUSD," = VND",result);
-    }
-}
-*/
-
-function vndToUSD() {
-    let amountVND = prompt("Enter VND amount: \n");
-    if(isNaN(amountVND)===false && (amountVND>0)){
-        let result = currencyFormat(amountVND / exchangeRate);
-        console.log("VND",amountVND," = USD",result);
-    } else {
-        let amountVND = prompt("Please enter a valid VND amount.");
-        let result = currencyFormat(amountUSD / exchangeRate);
-        console.log("VND",amountUSD," = USD",result);
-    }
-}  
-
-
-//USD to VND - new 
-function usdToVND() {
-    let amountUSD = prompt("Enter USD amount: \n");
-    if(isNaN(amountUSD)===false && (amountUSD>0)){
-        let result = currencyFormat(amountUSD * exchangeRate);
-        console.log("$",amountUSD," = VND",result);
-    } else {
-        let amountUSD = prompt("Please enter a valid USD amount.");
-        let result = currencyFormat(amountUSD * exchangeRate);
-        console.log("$",amountUSD," = VND",result);
-    }
-}    
-
-//Ask what currency user wants to convert to
-if ((user==="VND" || user==="vnd") && (goal==="USD" || goal==="usd")){
-    vndToUSD();
-} else if ((user==="USD" || user==="usd") && (goal==="VND" || goal==="vnd")){
-    usdToVND();
+function getAmount(){
+    amount = prompt("Your amount?");
 }
 
-/*if (user ==="A"){
-  vndToUSD();
-} else if (user ==="B"){
-    usdToVND();
-} */
+getUser(); getGoal(); getAmount();
 
-/*
-let userCurrency = prompt("Your currency (USD, VND, EUR, KRW, IDR):");
+//exchange rates
+const VND = {
+    VND: 1,
+    USD: 0.000043,
+    KRW: 0.052,
+    EUR: 0.000039,
+    IDR: 0.61
+  };
+  
+const USD = {
+    VND: 23208,
+    USD: 1,
+    KRW: 1192,
+    EUR: 0.90,
+    IDR: 14230,
+ };
+  
+const KRW = {
+    VND: 19.47,
+    USD: 0.00084,
+    KRW: 1,
+    EUR: 0.00075,
+    IDR: 11.94
+  };
 
-let outputCurrency = prompt("What do you want to convert to (USD, VND, EUR, KRW, IDR)?");
+const EUR = {
+    VND: 25869.92,
+    USD: 1.11,
+    KRW: 1327.55,
+    EUR: 1,
+    IDR: 15865.47
+};
 
-let exchangeRate = [ {currency: 'USD', rate: 23235.50}, 
-{currency: 'EUR', rate: 25707.18},  {currency: 'KRW', rate: 19.52}, 
-{currency: 'IDR', rate: 1.63} ];
+const IDR = {
+    VND: 1.63,
+    USD: 0.00007,
+    KRW: 0.084,
+    EUR: 0.000063,
+    IDR: 1
+};
 
-//let userAmount = prompt("Enter your amount:");
+//functions to convert currencies, style the currencies, validate the input
+function vndToGoal() {
+      let rate = VND[goal];
+      let result = amount * rate;
+      if(isNaN(amount)===false && (amount>0)){
+        console.log("VND",amount,"=",goal,new Intl.NumberFormat({ style: 'currency', 
+        currency: goal }).format(result));
+      } else {
+        console.log("Please enter a valid positive number for your amount.");
+      }
+  }
 
-if (userCurrency===exchangeRate[j]["currency"]){
-    for {
-        let k=0;
-        if (outputCurrency===exchangeRate[k]["currency"]){
-            if (userCurrency ==="VND" || outputCurrency==="VND"){
-                if (userCurrency ==="VND"){
-
-                }
-            } else:
-            xchangeRate = exchangeRate[j]/exchangeRate[k];
-
-        } 
+function usdToGoal() {
+    let rate = USD[goal];
+    let result = amount * rate;
+    if(isNaN(amount)===false && (amount>0)){
+        console.log("USD",amount,"=",goal,new Intl.NumberFormat({ style: 'currency', 
+        currency: goal }).format(result));
+    } else {
+        console.log("Please enter a valid positive number for your amount.");
     }
-} */
+}
+
+function krwToGoal() {
+    let rate = KRW[goal];
+    let result = amount * rate;
+    if(isNaN(amount)===false && (amount>0)){
+        console.log("KRW",amount,"=",goal,new Intl.NumberFormat({ style: 'currency', 
+        currency: goal }).format(result));
+    } else {
+        console.log("Please enter a valid positive number for your amount.");
+    }
+}
+
+function eurToGoal() {
+    let rate = EUR[goal];
+    let result = amount * rate;
+    if(isNaN(amount)===false && (amount>0)){
+        console.log("EUR",amount,"=",goal,new Intl.NumberFormat({ style: 'currency', 
+        currency: goal }).format(result));
+    } else {
+        console.log("Please enter a valid positive number for your amount.");
+    }
+}
+
+function idrToGoal() {
+    let rate = IDR[goal];
+    let result = amount * rate;
+    if(isNaN(amount)===false && (amount>0)){
+        console.log("IDR",amount,"=",goal,new Intl.NumberFormat({ style: 'currency', 
+    currency: goal }).format(result));
+    } else {
+        console.log("Please enter a valid positive number for your amount.");
+    }
+    
+}
+
+//run the cases
+switch (user) {
+    case 'VND':
+        vndToGoal();
+        break;
+    case 'USD':
+        usdToGoal();
+        break;
+    case 'KRW':
+        krwToGoal();
+        break;
+    case 'EUR':
+        eurToGoal();
+        break;
+    case 'IDR':
+        idrToGoal();
+        break;
+}
